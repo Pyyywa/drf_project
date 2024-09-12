@@ -35,7 +35,7 @@ class Lesson(models.Model):
         **NULLABLE, verbose_name="Ссылка на видео", help_text="Укажите ссылку на видео"
     )
     course = models.ForeignKey(
-        Course, on_delete=models.PROTECT, related_name="курс", verbose_name="курс"
+        Course, on_delete=models.PROTECT, related_name="lessons", verbose_name="курс"
     )
 
     class Meta:
