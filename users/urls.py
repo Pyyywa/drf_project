@@ -1,14 +1,15 @@
-from users.apps import UsersConfig
 from django.urls import path
-from django.contrib.auth.views import LoginView, LogoutView
-from users.views import UserCreateView, email_verification, NewPasswordView
+from users.apps import UsersConfig
+from rest_framework.routers import DefaultRouter
+
+from users.views import UserViewSet
+from users.views import PaymentsListAPIView
 
 app_name = UsersConfig.name
 
+router = DefaultRouter()
+router.register(r'user', UserViewSet, basename='user')
+
 urlpatterns = [
-    path("login/", LoginView.as_view(template_name="login.html"), name="login"),
-    path("logout/", LogoutView.as_view(), name="logout"),
-    path("register/", UserCreateView.as_view(), name="register"),
-    path("email-confirm/<str:token>/", email_verification, name="email-confirm"),
-    path("reset_password/", NewPasswordView.as_view(), name="reset_password"),
-]
+                  path('user/payment/', PaymentsListAPIView.as_view(), name='user_payment'),
+              ] + router.urls
