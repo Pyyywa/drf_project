@@ -12,3 +12,10 @@ class PaymentsSerializer(ModelSerializer):
     class Meta:
         model = Payments
         fields = "__all__"
+
+
+class UserSerializerList(ModelSerializer):
+    payer = PaymentsSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User

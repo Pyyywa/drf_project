@@ -26,11 +26,4 @@ class CourseCountSerializer(ModelSerializer):
 
     class Meta:
         model = Course
-        fields = [
-            "name",
-            "preview",
-            "desc",
-            "owner",
-            "quantity_lesson",
-            "lessons",
-        ]
+        fields = "__all__"

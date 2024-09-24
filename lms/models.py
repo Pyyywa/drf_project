@@ -1,4 +1,7 @@
 from django.db import models
+
+import config.settings
+import users.models
 from config.settings import AUTH_USER_MODEL
 
 NULLABLE = {"blank": True, "null": True}
@@ -35,7 +38,13 @@ class Lesson(models.Model):
         **NULLABLE, verbose_name="Ссылка на видео", help_text="Укажите ссылку на видео"
     )
     course = models.ForeignKey(
-        Course, on_delete=models.PROTECT, related_name="lessons", verbose_name="курс"
+        Course, on_delete=models.CASCADE, related_name="lesson", verbose_name="курс"
+    )
+    creator = models.ForeignKey(
+        config.settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        **NULLABLE,
+        verbose_name="создатель"
     )
 
     class Meta:
