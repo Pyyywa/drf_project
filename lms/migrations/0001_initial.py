@@ -72,11 +72,11 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "view",
+                    "preview",
                     models.ImageField(
                         blank=True,
                         null=True,
-                        upload_to="lms/view",
+                        upload_to="lms/preview",
                         verbose_name="превью",
                     ),
                 ),
