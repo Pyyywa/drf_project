@@ -1,0 +1,193 @@
+[
+  {
+    "model": "lms.course",
+    "pk": 1,
+    "fields": {
+      "owner": 1,
+      "name": "Python",
+      "description": "Python-разработчик",
+      "preview": ""
+    }
+  },
+  {
+    "model": "lms.course",
+    "pk": 3,
+    "fields": {
+      "owner": 1,
+      "name": "Java",
+      "description": "Java-разработчик",
+      "preview": ""
+    }
+  },
+  {
+    "model": "lms.course",
+    "pk": 5,
+    "fields": {
+      "owner": 1,
+      "name": "C++",
+      "description": "Разработка на C++",
+      "preview": ""
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 1,
+    "fields": {
+      "creator": 1,
+      "course": 1,
+      "name": "Введение в Python_put",
+      "description": "Вводная тема_put",
+      "preview": "",
+      "link": "https://www.youtube.com/watch?v=34Rp6KVGIEM"
+
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 2,
+    "fields": {
+      "creator": 1,
+      "course": 1,
+      "name": "Основы Python - 3",
+      "description": "Урок об основах Python - 2",
+      "preview": "",
+      "link": "https://youtu.be/cKRRysbQZsM"
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 5,
+    "fields": {
+      "creator": 1,
+      "course": 5,
+      "name": "Введение в С++",
+      "description": "Описание",
+      "preview": "",
+      "link": "https://youtu.be/fHl7UyRjOf0"
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 6,
+    "fields": {
+      "creator": 1,
+      "course": 1,
+      "name": "Словари в Pyhton",
+      "description": "Работа со словарями",
+      "preview": "",
+      "link": "https://www.youtube.com/watch?v=W2oO1Y-QDzo"
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 10,
+    "fields": {
+      "creator": 1,
+      "course": 3,
+      "name": "Введение в Java_update",
+      "description": "Описание",
+      "preview": "",
+      "link": "https://youtu.be/fHl7UyRjOf0"
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 12,
+    "fields": {
+      "creator": 1,
+      "course": 3,
+      "name": "Типы данных в Java",
+      "description": "Описание",
+      "preview": "",
+      "link": "https://www.youtube.com/watch?v=g7jDucodUzQ"
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 17,
+    "fields": {
+      "creator": 1,
+      "course": 5,
+      "name": "Массивы в Java_put",
+      "description": "Описание_patch",
+      "preview": "",
+      "link": "https://youtu.be/GULFKAX0nxY"
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 18,
+    "fields": {
+      "creator": 1,
+      "course": 5,
+      "name": "Новые методы массивов в JS",
+      "description": "Описание новых методов массивов",
+      "preview": "",
+      "link": "https://youtu.be/WPmPgzgNfDU"
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 19,
+    "fields": {
+      "creator": 1,
+      "course": 5,
+      "name": "Новые методы массивов в JS_",
+      "description": "Описание новых методов массивов_",
+      "preview": "",
+      "link": "https://www.youtube.com/watch?v=WPmPgzgNfDU"
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 20,
+    "fields": {
+      "creator": 1,
+      "course": 3,
+      "name": "Java - ещё один урок",
+      "description": "Описание",
+      "preview": "",
+      "link": "https://youtu.be/fHl7UyRjOf0"
+    }
+  },
+  {
+    "model": "lms.subscription",
+    "pk": 2,
+    "fields": {
+      "subscriber": 2,
+      "course": 1
+    }
+  },
+  {
+    "model": "lms.subscription",
+    "pk": 4,
+    "fields": {
+      "subscriber": 2,
+      "course": 5
+    }
+  },
+  {
+    "model": "lms.subscription",
+    "pk": 5,
+    "fields": {
+      "subscriber": 3,
+      "course": 3
+    }
+  },
+  {
+    "model": "lms.subscription",
+    "pk": 6,
+    "fields": {
+      "subscriber": 3,
+      "course": 1
+    }
+  },
+  {
+    "model": "lms.subscription",
+    "pk": 8,
+    "fields": {
+      "subscriber": 3,
+      "course": 1
+    }
+  }
+]

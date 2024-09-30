@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                     models.ImageField(
                         blank=True,
                         null=True,
-                        upload_to="lms/preview",
+                        upload_to="lms/view",
                         verbose_name="превью",
                     ),
                 ),
@@ -72,11 +72,11 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "view",
+                    "preview",
                     models.ImageField(
                         blank=True,
                         null=True,
-                        upload_to="lms/view",
+                        upload_to="lms/preview",
                         verbose_name="превью",
                     ),
                 ),

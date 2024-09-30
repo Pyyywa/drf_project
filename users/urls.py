@@ -6,7 +6,7 @@ from users.views import (
     UserListAPIView,
     UserRetrieveAPIView,
     UserCreateAPIView,
-    UsereUpdateAPIView,
+    UserUpdateAPIView,
     UserDestroyAPIView,
     PaymentsListAPIView,
 )
