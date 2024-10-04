@@ -1,6 +1,5 @@
 from django.urls import path
 from users.apps import UsersConfig
-from rest_framework.routers import DefaultRouter
 
 from users.views import (
     UserListAPIView,
@@ -9,6 +8,7 @@ from users.views import (
     UserUpdateAPIView,
     UserDestroyAPIView,
     PaymentsListAPIView,
+    StripeAPIView,
 )
 
 app_name = UsersConfig.name
@@ -19,6 +19,6 @@ urlpatterns = [
     path("user/create/", UserCreateAPIView.as_view(), name="user_create"),
     path("user/update/<int:pk>/", UserUpdateAPIView.as_view(), name="user_update"),
     path("user/delete/<int:pk>/", UserDestroyAPIView.as_view(), name="user_retrieve"),
-    # Оплата - Read (List)
     path("user/payment/", PaymentsListAPIView.as_view(), name="user_payment"),
+    path("user/payment/<int:pk>/", StripeAPIView.as_view(), name="course_payment"),
 ]

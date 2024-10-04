@@ -1,7 +1,5 @@
 from django.contrib.auth.models import Group
 
-import os
-
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.forms.models import model_to_dict

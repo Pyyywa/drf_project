@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from lms.models import Course, Lesson
+from lms.models import Course
 
 NULLABLE = {"blank": True, "null": True}
 
@@ -39,7 +39,7 @@ class Payments(models.Model):
         ("TRANSFER", "Перевод на счет"),
     ]
 
-    user = (
+    payer = (
         models.ForeignKey(User, on_delete=models.CASCADE, related_name="Пользователь"),
     )
     date_payment = (
@@ -47,18 +47,20 @@ class Payments(models.Model):
     )
     paid_course = (
         models.ForeignKey(
-            Course, on_delete=models.CASCADE, verbose_name="Оплаченный курс", **NULLABLE
-        ),
-    )
-    paid_lesson = (
-        models.ForeignKey(
-            Lesson, on_delete=models.CASCADE, verbose_name="Оплаченный урок", **NULLABLE
+            Course,
+            on_delete=models.CASCADE,
+            verbose_name="Оплаченный курс",
+            related_name="paid_course",
         ),
     )
     payment_sum = models.PositiveIntegerField(verbose_name="Cумма платежа")
     payment_method = models.CharField(
         max_length=50, choices=method_choices, verbose_name="Способ оплаты"
     )
+    currency = models.CharField(max_length=5, **NULLABLE, verbose_name="валюта")
+    product_id = models.CharField(max_length=100, **NULLABLE, verbose_name="продукт")
+    price_id = models.CharField(max_length=100, **NULLABLE, verbose_name="оплата")
+    session_id = models.CharField(max_length=100, **NULLABLE, verbose_name="сессия")
 
     class Meta:
         verbose_name = "платеж"
@@ -66,5 +68,6 @@ class Payments(models.Model):
 
     def __str__(self):
         return (
-            f"{self.user}: {self.paid_course if self.paid_course else self.paid_lesson}"
+            f"{self.payer}: {self.paid_course}"
+            f"({self.date_payment, self.payment_sum, self.payment_method})"
         )

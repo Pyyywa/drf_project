@@ -1,7 +1,5 @@
 from django.db import models
-
 import config.settings
-import users.models
 from config.settings import AUTH_USER_MODEL
 
 NULLABLE = {"blank": True, "null": True}
@@ -22,6 +20,7 @@ class Course(models.Model):
     owner = models.ForeignKey(
         AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name="Автор"
     )
+    price = models.PositiveIntegerField(default=1100, **NULLABLE, verbose_name="цена")
 
     class Meta:
         verbose_name = "курс"
@@ -52,6 +51,7 @@ class Lesson(models.Model):
         **NULLABLE,
         verbose_name="создатель",
     )
+    price = models.PositiveIntegerField(default=1100, **NULLABLE, verbose_name="цена")
 
     class Meta:
         verbose_name = "урок"
