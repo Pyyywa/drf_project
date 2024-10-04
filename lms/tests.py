@@ -47,6 +47,7 @@ class LmsTestCase(APITestCase):
                 "description": "course_description",
                 "preview": response.json()["preview"],
                 "owner": self.user.pk,
+                "price": 1100,
             },
         )
         # Проверяем наличие записи в базе данных
@@ -79,7 +80,7 @@ class LmsTestCase(APITestCase):
                                 "link": "http://youtube.com/test_lesson.mp4",
                                 "creator": self.user.pk,
                                 "course": response.json()["results"][0]["lesson"][0][
-                                    "course"
+                                    "course", "price":1100
                                 ],
                             }
                         ],
@@ -88,6 +89,7 @@ class LmsTestCase(APITestCase):
                         "description": "course_description",
                         "preview": response.json()["results"][0]["preview"],
                         "creator": self.user.pk,
+                        "price": 1100,
                     }
                 ],
             },
@@ -115,6 +117,7 @@ class LmsTestCase(APITestCase):
                 "description": "course_description",
                 "preview": response_detail.json()["preview"],
                 "creator": self.user.pk,
+                "price": 1100,
             },
         )
 
@@ -144,6 +147,7 @@ class LmsTestCase(APITestCase):
                 "description": "course_description_patch",
                 "preview": response_patch.json()["preview"],
                 "creator": self.user.pk,
+                "price": 1100,
             },
         )
 
@@ -213,6 +217,7 @@ class LessonTestCase(APITestCase):
                 "link": "http://youtube.com/test_lesson.mp4",
                 "creator": self.user_1.pk,
                 "course": response.json()["course"],
+                "price": 1100,
             },
         )
 
@@ -243,6 +248,7 @@ class LessonTestCase(APITestCase):
                         "link": "http://youtube.com/test_lesson.mp4",
                         "creator": self.user_1.pk,
                         "course": response.json()["results"][0]["course"],
+                        "price": 1100,
                     }
                 ],
             },
@@ -273,6 +279,7 @@ class LessonTestCase(APITestCase):
                 "link": "http://youtube.com/test_lesson.mp4",
                 "creator": self.user_1.pk,
                 "course": response_detail.json()["course"],
+                "price": 1100,
             },
         )
 
@@ -306,6 +313,7 @@ class LessonTestCase(APITestCase):
                 "link": "http://youtube.com/test_lesson_1_patch.mp4",
                 "creator": self.user_1.pk,
                 "course": response_patch.json()["course"],
+                "price": 1100,
             },
         )
 

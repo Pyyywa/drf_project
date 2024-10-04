@@ -6,7 +6,8 @@
       "owner": 1,
       "name": "Python",
       "description": "Python-разработчик",
-      "preview": ""
+      "preview": "",
+      "price": 100000
     }
   },
   {
@@ -16,7 +17,8 @@
       "owner": 1,
       "name": "Java",
       "description": "Java-разработчик",
-      "preview": ""
+      "preview": "",
+      "price": 110000
     }
   },
   {
@@ -26,7 +28,8 @@
       "owner": 1,
       "name": "C++",
       "description": "Разработка на C++",
-      "preview": ""
+      "preview": "",
+      "price": 120000
     }
   },
   {
@@ -38,7 +41,8 @@
       "name": "Введение в Python_put",
       "description": "Вводная тема_put",
       "preview": "",
-      "link": "https://www.youtube.com/watch?v=34Rp6KVGIEM"
+      "link": "https://www.youtube.com/watch?v=34Rp6KVGIEM",
+      "price": 1100
 
     }
   },
@@ -48,10 +52,11 @@
     "fields": {
       "creator": 1,
       "course": 1,
-      "name": "Основы Python - 3",
+      "name": "Основы Python - 2",
       "description": "Урок об основах Python - 2",
       "preview": "",
-      "link": "https://youtu.be/cKRRysbQZsM"
+      "link": "https://youtu.be/cKRRysbQZsM",
+      "price": 1100
     }
   },
   {
@@ -63,7 +68,8 @@
       "name": "Введение в С++",
       "description": "Описание",
       "preview": "",
-      "link": "https://youtu.be/fHl7UyRjOf0"
+      "link": "https://youtu.be/fHl7UyRjOf0",
+      "price": 1100
     }
   },
   {
@@ -75,7 +81,8 @@
       "name": "Словари в Pyhton",
       "description": "Работа со словарями",
       "preview": "",
-      "link": "https://www.youtube.com/watch?v=W2oO1Y-QDzo"
+      "link": "https://www.youtube.com/watch?v=W2oO1Y-QDzo",
+      "price": 1100
     }
   },
   {
@@ -87,7 +94,8 @@
       "name": "Введение в Java_update",
       "description": "Описание",
       "preview": "",
-      "link": "https://youtu.be/fHl7UyRjOf0"
+      "link": "https://youtu.be/fHl7UyRjOf0",
+      "price": 1100
     }
   },
   {
@@ -99,7 +107,8 @@
       "name": "Типы данных в Java",
       "description": "Описание",
       "preview": "",
-      "link": "https://www.youtube.com/watch?v=g7jDucodUzQ"
+      "link": "https://www.youtube.com/watch?v=g7jDucodUzQ",
+      "price": 1100
     }
   },
   {
@@ -108,10 +117,11 @@
     "fields": {
       "creator": 1,
       "course": 5,
-      "name": "Массивы в Java_put",
-      "description": "Описание_patch",
+      "name": "Массивы в Java",
+      "description": "Описание",
       "preview": "",
-      "link": "https://youtu.be/GULFKAX0nxY"
+      "link": "https://youtu.be/GULFKAX0nxY",
+      "price": 1100
     }
   },
   {
@@ -123,7 +133,8 @@
       "name": "Новые методы массивов в JS",
       "description": "Описание новых методов массивов",
       "preview": "",
-      "link": "https://youtu.be/WPmPgzgNfDU"
+      "link": "https://youtu.be/WPmPgzgNfDU",
+      "price": 1100
     }
   },
   {
@@ -135,7 +146,8 @@
       "name": "Новые методы массивов в JS_",
       "description": "Описание новых методов массивов_",
       "preview": "",
-      "link": "https://www.youtube.com/watch?v=WPmPgzgNfDU"
+      "link": "https://www.youtube.com/watch?v=WPmPgzgNfDU",
+      "price": 1100
     }
   },
   {
@@ -147,7 +159,8 @@
       "name": "Java - ещё один урок",
       "description": "Описание",
       "preview": "",
-      "link": "https://youtu.be/fHl7UyRjOf0"
+      "link": "https://youtu.be/fHl7UyRjOf0",
+      "price": 1100
     }
   },
   {

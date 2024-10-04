@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer, URLField, SerializerMethodField
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from lms.models import Course, Lesson, Subscription
 from lms.validators import LinkValidator
 
@@ -29,9 +29,7 @@ class CourseCountSerializer(ModelSerializer):
     def get_subscription(self, obj):
         """Информация о подписке на курс"""
         user = self.context["request"].user.pk
-        if Subscription.objects.filter(subscriber_id=user, course_id=obj.pk):
-            return True
-        return False
+        return bool(Subscription.objects.filter(subscriber_id=user, course_id=obj.pk))
 
     class Meta:
         model = Course

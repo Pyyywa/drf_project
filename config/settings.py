@@ -24,15 +24,18 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "users",
-    "lms",
+    "drf_yasg",
+    "corsheaders",
     "django_filters",
     "rest_framework_simplejwt",
+    "users",
+    "lms",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -126,3 +129,16 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
+
+# Настройки CORS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",  # Замените на адрес вашего фронтенд-сервера
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",  # Замените на адрес вашего фронтенд-сервера
+    # и добавьте адрес бэкенд-сервера
+]
+# Запрещён доступ всех серверов, кроме тех, которые указаны в CORS_ALLOWED_ORIGINS
+CORS_ALLOW_ALL_ORIGINS = False
+# Секретный ключ платёжной системы
+SECRET_STRIPE_KEY = os.getenv("SECRET_STRIPE_KEY")
