@@ -15,7 +15,7 @@ class Course(models.Model):
         upload_to="lms/courses/previews", verbose_name="превью", **NULLABLE
     )
     description = models.TextField(
-        verbose_name="описание", help_text="Добавьте описание к курсу"
+        verbose_name="описание", help_text="Добавьте описание к курсу", blank=True
     )
     owner = models.ForeignKey(
         AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name="Автор"
@@ -37,10 +37,10 @@ class Lesson(models.Model):
         upload_to="lms/lessons/previews", verbose_name="превью", **NULLABLE
     )
     description = models.TextField(
-        verbose_name="описание", help_text="Добавьте описание к уроку"
+        verbose_name="описание", help_text="Добавьте описание к уроку", blank=True
     )
     link = models.URLField(
-        verbose_name="Ссылка на видео", help_text="Укажите ссылку на видео"
+        verbose_name="Ссылка на видео", help_text="Укажите ссылку на видео", blank=True
     )
     course = models.ForeignKey(
         Course, on_delete=models.CASCADE, related_name="lesson", verbose_name="курс"
