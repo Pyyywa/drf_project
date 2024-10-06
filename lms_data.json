@@ -7,7 +7,9 @@
       "name": "Python",
       "description": "Python-разработчик",
       "preview": "",
-      "price": 100000
+      "price": 100000,
+      "date_update": "2024-10-06T11:00:15Z",
+      "is_mailing": true
     }
   },
   {
@@ -18,7 +20,9 @@
       "name": "Java",
       "description": "Java-разработчик",
       "preview": "",
-      "price": 110000
+      "price": 110000,
+      "date_update": "2024-10-06T11:01:25Z",
+      "is_mailing": true
     }
   },
   {
@@ -29,7 +33,9 @@
       "name": "C++",
       "description": "Разработка на C++",
       "preview": "",
-      "price": 120000
+      "price": 120000,
+      "date_update": "2024-10-06T11:00:35Z",
+      "is_mailing": true
     }
   },
   {
@@ -38,12 +44,11 @@
     "fields": {
       "creator": 1,
       "course": 1,
-      "name": "Введение в Python_put",
-      "description": "Вводная тема_put",
+      "name": "Введение в Python",
+      "description": "Вводная тема",
       "preview": "",
       "link": "https://www.youtube.com/watch?v=34Rp6KVGIEM",
       "price": 1100
-
     }
   },
   {
@@ -52,8 +57,8 @@
     "fields": {
       "creator": 1,
       "course": 1,
-      "name": "Основы Python - 2",
-      "description": "Урок об основах Python - 2",
+      "name": "Основы Python",
+      "description": "Урок об основах Python",
       "preview": "",
       "link": "https://youtu.be/cKRRysbQZsM",
       "price": 1100
@@ -91,7 +96,7 @@
     "fields": {
       "creator": 1,
       "course": 3,
-      "name": "Введение в Java_update",
+      "name": "Введение в Java",
       "description": "Описание",
       "preview": "",
       "link": "https://youtu.be/fHl7UyRjOf0",
@@ -143,8 +148,8 @@
     "fields": {
       "creator": 1,
       "course": 5,
-      "name": "Новые методы массивов в JS_",
-      "description": "Описание новых методов массивов_",
+      "name": "Новые методы массивов в JS",
+      "description": "Описание новых методов массивов",
       "preview": "",
       "link": "https://www.youtube.com/watch?v=WPmPgzgNfDU",
       "price": 1100

@@ -21,6 +21,10 @@ class Course(models.Model):
         AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name="Автор"
     )
     price = models.PositiveIntegerField(default=1100, **NULLABLE, verbose_name="цена")
+    date_update = models.DateTimeField(**NULLABLE, verbose_name="дата обновления")
+    is_mailing = models.BooleanField(
+        default=False, **NULLABLE, verbose_name="статус рассылки"
+    )
 
     class Meta:
         verbose_name = "курс"
