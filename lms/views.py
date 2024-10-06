@@ -1,4 +1,6 @@
 from rest_framework import viewsets, generics
+from django.utils import timezone
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -6,6 +8,11 @@ from lms.models import Course, Lesson, Subscription
 from lms.serializers import CourseSerializer, LessonSerializer, CourseCountSerializer
 from lms.permissions import IsModerator, IsCreator
 from lms.paginators import LmsPaginator
+from lms.tasks import send_mail_course_update
+from icecream import ic
+from users.models import User
+
+ic.disable()
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -40,20 +47,40 @@ class CourseViewSet(viewsets.ModelViewSet):
             self.permission_classes = [IsCreator | ~IsModerator]
         return super().get_permissions()
 
+    def perform_update(self, serializer):
+        """Отправка сообщений при обновлении курса"""
+        update_course = serializer.save()
+        update_course.is_mailing = False
+        date_update_course = timezone.localtime(update_course.date_update)
+        course_id = update_course.pk
+        name = update_course.name
+        subscribers = Subscription.objects.filter(course=course_id)
+        recipient_list = []
+        for subscriber in subscribers:
+            users = User.objects.filter(id=subscriber.subscriber_id)
+            for user in users:
+                recipient_list.append(user.email)
+        # Отправка письма
+        send_mail_course_update.delay(
+            date_update_course=date_update_course,
+            name=name,
+            recipient_list=recipient_list,
+            course_id=course_id,
+        )
+        update_course.save()
+
 
 class LessonCreateAPIView(generics.CreateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
 
     def perform_create(self, serializer):
-        lesson = serializer.save()
-        lesson.owner = self.request.user
-        lesson.save()
-
-    def perform_create(self, serializer):
-        """Привязка пользователя к уроку"""
         new_lesson = serializer.save()
-        new_lesson.creator = self.request.user
+        course = get_object_or_404(Course, pk=new_lesson.course.pk)
+        new_lesson.owner = self.request.user
+        course.date_update = timezone.localtime(timezone.now())
+        course.is_mailing = False
+        course.save()
         new_lesson.save()
 
 
@@ -74,6 +101,14 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
     permission_classes = [IsAuthenticated, IsCreator | IsModerator]
+
+    def perform_update(self, serializer):
+        update_lesson = serializer.save()
+        course = get_object_or_404(Course, pk=update_lesson.course.pk)
+        course.date_update = timezone.localtime(timezone.now())
+        course.is_mailing = False
+        course.save()
+        update_lesson.save()
 
 
 class LessonDestroyAPIView(generics.DestroyAPIView):

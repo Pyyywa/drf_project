@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from datetime import timedelta
+from celery.schedules import crontab
 
 from dotenv import load_dotenv
 
@@ -28,6 +29,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_filters",
     "rest_framework_simplejwt",
+    "django_extensions",
+    "django_celery_beat",
     "users",
     "lms",
 ]
@@ -142,3 +145,48 @@ CSRF_TRUSTED_ORIGINS = [
 CORS_ALLOW_ALL_ORIGINS = False
 # Секретный ключ платёжной системы
 SECRET_STRIPE_KEY = os.getenv("SECRET_STRIPE_KEY")
+
+CACHE_ENABLED = os.getenv("CACHE_ENABLED") == "True"
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": os.getenv("CACHE_LOCATION"),
+        "TIMEOUT": 60,
+    }
+}
+
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_SSL = True
+EMAIL_USE_TSL = False
+
+REDIS_HOST = "localhost"
+REDIS_PORT = 6379
+
+# CELERY
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = (
+    "redis://" + os.getenv("REDIS_HOST") + ":" + os.getenv("REDIS_PORT") + "/0"
+)
+CElERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 3600}
+CELERY_RESULT_BACKEND = (
+    "redis://" + os.getenv("REDIS_HOST") + ":" + os.getenv("REDIS_PORT") + "/0"
+)
+CELERY_BEAT_SCHEDULER = os.getenv("CELERY_BEAT_SCHEDULER")
+CELERY_BEAT_SCHEDULE = {
+    "send_mail_course_monitoring": {
+        "task": "lms.tasks.send_mail_course_monitoring",
+        "schedule": crontab(minute="0", hour="21", day_of_week="*"),
+    },
+    "user_not_is_active": {
+        "task": "users.tasks.user_not_is_active",
+        "schedule": crontab(minute="0", hour="21", day_of_week="*"),
+    },
+}
+CELERY_ACCEPT_CONTENT = ["application/json", "json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "Europe/Moscow"

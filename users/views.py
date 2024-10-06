@@ -85,7 +85,7 @@ class StripeAPIView(APIView):
             payment = Payments.objects.get(course_pay=course.pk, payer=user.pk)
             return Response(
                 {
-                    "message": f"Пользователь {payment.payer} уже оплатил курс "
+                    "message": f"Пользователь {payment.payer} оплатил курс "
                     f'"{payment.course_pay}".',
                     "date_pay": payment.date_pay,
                     "amount_pay": payment.amount_pay,

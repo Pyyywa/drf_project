@@ -19,7 +19,10 @@ class User(AbstractUser):
         help_text="Введите номер телефона",
     )
     country = models.CharField(
-        max_length=50, verbose_name="country", help_text="Введите страну", **NULLABLE
+        max_length=50,
+        verbose_name="country",
+        help_text="Введите страну",
+        **NULLABLE
     )
 
     USERNAME_FIELD = "email"
@@ -40,10 +43,15 @@ class Payments(models.Model):
     ]
 
     payer = (
-        models.ForeignKey(User, on_delete=models.CASCADE, related_name="Пользователь"),
+        models.ForeignKey(
+            User,
+            on_delete=models.CASCADE,
+            related_name="Пользователь"),
     )
     date_payment = (
-        models.DateTimeField(auto_now_add=True, verbose_name="Дата оплаты"),
+        models.DateTimeField(
+            auto_now_add=True,
+            verbose_name="Дата оплаты"),
     )
     paid_course = (
         models.ForeignKey(
@@ -55,7 +63,9 @@ class Payments(models.Model):
     )
     payment_sum = models.PositiveIntegerField(verbose_name="Cумма платежа")
     payment_method = models.CharField(
-        max_length=50, choices=method_choices, verbose_name="Способ оплаты"
+        max_length=50,
+        choices=method_choices,
+        verbose_name="Способ оплаты"
     )
     currency = models.CharField(max_length=5, **NULLABLE, verbose_name="валюта")
     product_id = models.CharField(max_length=100, **NULLABLE, verbose_name="продукт")
